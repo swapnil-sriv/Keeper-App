@@ -1,11 +1,33 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import Note from "./Note";
+import React, { useState } from "react";
+import Header from "./Header";
 import Footer from "./Footer";
-import Header from "./Header"
+import Note from "./Note";
+import CreateArea from "./CreateArea";
+import DeleteIcon from '@mui/icons-material/Delete';
 
-function App(){
-    return <div><Header/><Note/><Footer/></div>
+function App() {
+  const [notes, setNotes] = useState([]); 
+  function addNote(note){
+    setNotes(prevNotes=>{
+      return [...prevNotes,note];
+    })
+  }
+
+  function deleteNote(id){
+    setNotes(prevNotes=> {
+        return prevNotes.filter((noteItem, index)=>
+        index!=id)
+    });
+  }
+  return (
+    <div>
+      <Header />
+      <CreateArea onAdd={addNote}/>
+      {notes.map((anote,index)=>
+      <Note title={anote.title}  key={index} id={index} content={anote.content} onDelete={deleteNote} />)}
+      <Footer />
+    </div>
+  );
 }
 
 export default App;
