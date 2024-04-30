@@ -3,7 +3,7 @@
 A simple note taking app built using React Native.
 
 
-## Table of contents (optional)
+## Table of contents
 
 - Requirements
 - Recommended modules
@@ -11,14 +11,14 @@ A simple note taking app built using React Native.
 
 
 
-## Requirements (required)
+## Requirements
 
 1. Node
 2. npm or yarn
 
 
 
-## Installation (required, unless a separate INSTALL.md is provided)
+## Installation
 
 1. Change the directory to the project folder.
 2. Install all dependencies using - "npm i"
