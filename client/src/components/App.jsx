@@ -5,7 +5,9 @@ import Note from "./Note";
 import CreateArea from "./CreateArea";
 import DeleteIcon from '@mui/icons-material/Delete';
 
+
 function App() {
+  const [data,setData] = React.useState(null);
   const [notes, setNotes] = useState([]); 
   function addNote(note){
     setNotes(prevNotes=>{
@@ -19,20 +21,22 @@ function App() {
         index!=id)
     });
   }
-
-  const [data,setData] = React.useState(null);
+  
   React.useEffect(()=>{
-  fetch("/api")
-  .then(res=>res.json())
-  .then(data=>setData(data.message));
-},[]);
+    fetch("http://localhost:3000/api")
+    .then(res=>res.json())
+    .then(data=>setNotes(data))
+    .then(console.log(notes));
+  },[]);
+  
+  
 
   return (
     <div>
       <Header />
       <CreateArea onAdd={addNote}/>
-      {notes.map((anote,index)=>
-      <Note title={anote.title}  key={index} id={index} content={anote.content} onDelete={deleteNote} />)}
+      {notes.map((note,index)=>
+      <Note title={note.title}  key={index} id={index} content={note.content} onDelete={deleteNote} />)}
       <Footer />
     </div>
   );
