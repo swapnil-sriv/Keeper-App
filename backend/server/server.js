@@ -6,7 +6,12 @@ app.get("/", function(req, res){
 })
 app.get("/api", function(req, res){
     // console.log(request);
-    res.json([{key:1,title:"Title from server",content:"Content from server"},{key:2,title:"2Title from server",content:"2Content from server"}]);
+    const notes = [
+        { key:1, title: 'Note 1', content: 'This is note 1' },
+        { key:2, title: 'Note 2', content: 'This is note 2' },
+        { key:3, title: 'Note 3', content: 'This is note 3' }
+      ];
+      res.json(notes);
 })
 
 app.listen(3000,()=>{
