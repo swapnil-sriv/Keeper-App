@@ -1,5 +1,9 @@
 const express = require("express");
+const cors = require('cors');
 const app = express();
+
+app.use(cors());
+
 app.get("/", function(req, res){
     // console.log(request);
     res.send("<h1>Header<h1>");

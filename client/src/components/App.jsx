@@ -22,8 +22,8 @@ function App() {
     });
   }
   
-  useEffect(() => {
-    fetch('http://localhost:3001/api')
+  React.useEffect(() => {
+    fetch('http://localhost:3000/api')
      .then(res => res.json())
      .then(data => setNotes(data));
   }, []);
