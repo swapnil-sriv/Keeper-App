@@ -10,17 +10,21 @@ function CreateArea(props) {
   
   function handleChange(event){
     const {name, value} = event.target;
-  
-    setNote (prevNote => {
-      return {...prevNote, [name]:value}
-    })
+    setNote (prevNote => {return {...prevNote, [name]:value}});
   }
 
-  function submitNote(event){
-    props.onAdd(note);
-    event.preventDefault();
-    setNote({title:"",content:""});
-  }
+  // function submitNote(event){
+  //   props.onAdd(note);
+  //   event.preventDefault();
+  //   setNote({title:"",content:""});
+  // }
+
+ async function handleSubmit(event){
+  event.preventDefault();
+  console.log(note);
+  props.onAdd(note);
+  //setNote({title:"",content:""});
+ }
 
   function expand(){
     changeEstate(true);
@@ -28,7 +32,7 @@ function CreateArea(props) {
 
   return (  
     <div>
-    <form className="create-note">
+    <form className="create-note" >
         
       {estate&& <input
           name="title"
@@ -40,7 +44,7 @@ function CreateArea(props) {
         />}
         <textarea name="content" onChange={handleChange} onClick={expand} placeholder="Take a note..." rows={estate?3:1} value={note.content} />
           <Zoom in={estate}>
-        <Fab onClick={submitNote}> <AddIcon/> </Fab></Zoom> 
+        <Fab onClick={handleSubmit}> <AddIcon/> </Fab></Zoom> 
       </form> 
     </div>
   );

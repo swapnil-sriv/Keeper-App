@@ -11,9 +11,16 @@ function App() {
   const [notes, setNotes] = useState([]); 
 
   function addNote(note){
-    setNotes(prevNotes=>{
-      return [...prevNotes,note];
+    fetch('http://localhost:3000/Notedown/add', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(note)
     })
+    .then(response => response.json())
+    .then(data => {
+      setNotes(prevNotes => [...prevNotes, data]);
+    })
+    .catch(error => console.error('Error:', error));
   }
 
   async function deleteNote(id){
@@ -40,7 +47,14 @@ function App() {
       <Header />
       <CreateArea onAdd={addNote}/>
       {notes.map((note,index)=>
-      <Note title={note.title}  key={note.id} id={note.id} content={note.ncontent} onDelete={()=>deleteNote(note.id)} />)}
+
+      <Note title={note.title}  
+      key={note.id} 
+      id={note.id} 
+      content={note.ncontent} 
+      onDelete={()=>deleteNote(note.id)} />
+      
+      )}
       <Footer />
     </div>
   );

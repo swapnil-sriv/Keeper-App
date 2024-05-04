@@ -13,9 +13,12 @@ const db = new pg.Client({
 
 db.connect();
 
-
+app.use(express.json());
 
 app.use(cors());
+
+app.options('/Notedown/add', cors());
+
 
 app.get("/", function(req, res){
     // console.log(request);
@@ -41,6 +44,24 @@ app.delete('/Notedown/:id',(req,res)=>{
         res.status(200).send('Note deleted');
     });
 });
+
+app.post('/Notedown/add',async (req,res)=>{
+
+   try{
+    const {title, content} = req.body;
+    await db.query('INSERT INTO note (title, ncontent) VALUES ($1, $2)',[title,content]);
+    res.status(201).send(`Added a new note`);
+   } 
+   catch(err){
+    console.log(err);
+   }
+
+})
+
+app.use(function(err, req, res, next) {
+    console.error(err.stack);
+    res.status(500).send('Internal Server Error');
+  });
 
 app.listen(3000,()=>{
     console.log("server started at port: 3000");
