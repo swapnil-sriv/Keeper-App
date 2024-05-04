@@ -13,6 +13,8 @@ const db = new pg.Client({
 
 db.connect();
 
+const port = 3000;
+
 app.use(express.json());
 
 app.use(cors());
@@ -37,7 +39,7 @@ app.get("/Notedown/notes", async (req, res)=>{
     }
 });
 
-app.delete('/Notedown/:id',(req,res)=>{
+app.delete('/Notedown/delete/:id',(req,res)=>{
     const id= req.params.id;
     db.query('DELETE FROM note WHERE id=$1',[id],(err,result)=>{
         if(err) console.log(err);
@@ -63,6 +65,6 @@ app.use(function(err, req, res, next) {
     res.status(500).send('Internal Server Error');
   });
 
-app.listen(3000,()=>{
+app.listen(port,()=>{
     console.log("server started at port: 3000");
 });

@@ -3,9 +3,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 
 function Note({ title, content, id, onDelete }) {
 
-  // function handleClick(){
-  //   props.onDelete(props.id);
-  // }
+
 
   return (
     <div className="note">

@@ -5,7 +5,7 @@ function Header() {
   return (
 
     <header>
-     <h1> <DrawIcon/> Keeper</h1>
+     <h1> <DrawIcon/> Notedown</h1>
     </header>
   );
 }

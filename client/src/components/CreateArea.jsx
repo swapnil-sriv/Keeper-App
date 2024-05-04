@@ -13,15 +13,9 @@ function CreateArea(props) {
     setNote (prevNote => {return {...prevNote, [name]:value}});
   }
 
-  // function submitNote(event){
-  //   props.onAdd(note);
-  //   event.preventDefault();
-  //   setNote({title:"",content:""});
-  // }
-
  async function handleSubmit(event){
   event.preventDefault();
-  console.log(note);
+  //console.log(note);
   props.onAdd(note);
   //setNote({title:"",content:""});
  }
