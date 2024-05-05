@@ -1,3 +1,6 @@
+backend/
+client/
+
 # Logs
 logs
 *.log
