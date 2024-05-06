@@ -1,6 +1,6 @@
 # Notedown App
 
-A simple note taking app built using React Native.
+A simple note taking app built using React Native, Node.js/Express.js and Postgresql.
 
 
 ## Table of contents
@@ -14,7 +14,7 @@ A simple note taking app built using React Native.
 
 1. Node
 2. npm or yarn
-3. Postgresql/pdAdmin
+3. Postgresql/pgAdmin
 
 
 ## Installation
